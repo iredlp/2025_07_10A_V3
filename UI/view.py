@@ -20,7 +20,7 @@ class View(ft.UserControl):
         self._title = None
         self.txt_name = None
         self.btn_hello = None
-        self.txt_result = None
+        self._txt_result = None
         self.txt_container = None
 
     def load_interface(self):
@@ -29,7 +29,7 @@ class View(ft.UserControl):
         self._page.controls.append(self._title)
 
         self._ddcategory = ft.Dropdown(label="Category", width=200)
-
+        self._controller.fillDDCategory()
         self._dp1 = ft.DatePicker(
             on_change=lambda e: print(f"Giorno selezionato: {self._dp1.value}"),
             on_dismiss=lambda e: print("Data non selezionata")
@@ -71,8 +71,8 @@ class View(ft.UserControl):
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row2)
 
-        self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
-        self._page.controls.append(self.txt_result)
+        self._txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
+        self._page.controls.append(self._txt_result)
         self._page.update()
 
     @property
